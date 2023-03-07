@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Localization;
 using System.Globalization;
 using System.Reflection;
+using StacktimBCAPI.Model;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -51,11 +53,11 @@ app.MapGet("/", (IStringLocalizerFactory _localizerFactory, IHostEnvironment _en
     //throw new SystemException("Il n'y a pas de route par défaut dans l'API. Merci d'indiquer une route");
     var oLocalizer = _localizerFactory.Create("StackTimBC", _environment.ApplicationName); // Le premier paramétre est le nom des ficheirs de ressource
     var cMessage = oLocalizer["NoDefaultRoute"].ToString();
-    return Results.BadRequest(new { Error = cMessage } );
+    return Results.BadRequest(new { Error = cMessage });
 
 });
 
-app.MapGet("Error", (HttpContext _context, ILoggerFactory _loggerFactory, IConfiguration _configuration, IStringLocalizerFactory _localizerFactory, IHostEnvironment _environment ) =>
+app.MapGet("Error", (HttpContext _context, ILoggerFactory _loggerFactory, IConfiguration _configuration, IStringLocalizerFactory _localizerFactory, IHostEnvironment _environment) =>
 {
     // Por passer un logger en DI à une lambda en Minimal API il faut utiliser ILoggerFactory 
     // En effet on ne peut paas injecter directement iLogguer car il demande un type dans le constructueur ILogger<T>. Ce qui exigerai de créér une classe pour gérer les log
@@ -80,7 +82,7 @@ app.MapGet("Error", (HttpContext _context, ILoggerFactory _loggerFactory, IConfi
     // Sauvegarde de l'erreur sur disque
     var oErreurID = Guid.NewGuid();
     File.AppendAllText(_configuration["LOGFILE"]!, "================ " + DateTime.Now.ToString() + " ID " + oErreurID.ToString() + Environment.NewLine
-                                                                       + oExceptionHandlerFeature!.Error.Message + Environment.NewLine 
+                                                                       + oExceptionHandlerFeature!.Error.Message + Environment.NewLine
                                                                        + oExceptionHandlerFeature!.Error.StackTrace + Environment.NewLine);
 
 
@@ -92,6 +94,10 @@ app.MapGet("Error", (HttpContext _context, ILoggerFactory _loggerFactory, IConfi
 
 );
 
+app.MapGet("Projets", () =>
+{
+    return Results.Ok(new Projet()); 
+});
 
 
 app.Run();

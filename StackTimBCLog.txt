@@ -1,0 +1,285 @@
+   at Program.<>c.<<Main>$>b__0_0() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 38
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)================ 07/03/2023 11:42:11
+Erro
+   at Program.<>c.<<Main>$>b__0_0() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 39
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 07/03/2023 11:42:47
+Erro
+   at Program.<>c.<<Main>$>b__0_0() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 39
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 07/03/2023 11:44:52
+Erro
+   at Program.<>c.<<Main>$>b__0_0() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 39
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 07/03/2023 11:45:47
+Erro
+   at Program.<>c.<<Main>$>b__0_0() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 40
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 07/03/2023 11:46:38
+Erro
+   at Program.<>c.<<Main>$>b__0_0() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 40
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 07/03/2023 11:47:30
+Erro
+   at Program.<>c.<<Main>$>b__0_0() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 42
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 07/03/2023 11:53:28
+Erro
+   at Program.<>c.<<Main>$>b__0_0() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 42
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 07/03/2023 11:58:51 ID 2d3b3b88-a608-4376-b4a4-d8f13ada3f39
+Erro
+   at Program.<>c.<<Main>$>b__0_0() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 42
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 07/03/2023 11:59:09 ID 0153ac8a-285e-4740-b56a-5de89894a2a3
+Erro
+   at Program.<>c.<<Main>$>b__0_0() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 42
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 07/03/2023 12:09:27 ID 01a9698b-92ff-49fa-993e-ee5778d491a6
+Erro
+   at Program.<>c.<<Main>$>b__0_0() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 42
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 07/03/2023 12:10:25 ID 34f62009-6f25-4f3c-b0e4-f42b2cfd0a63
+Erro
+   at Program.<>c.<<Main>$>b__0_0() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 42
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 07/03/2023 13:33:36 ID c1068f88-ba48-4294-8e44-17c76e5e76e0
+Erro
+   at Program.<>c.<<Main>$>b__0_1() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 42
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 07/03/2023 13:35:11 ID 004fd197-44e0-4ff7-af5d-0525d5b1f4d8
+Erro
+   at Program.<>c.<<Main>$>b__0_1() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 42
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 07/03/2023 13:39:33 ID d5c0f03a-91a9-4df4-80c2-c6e0acf9b97d
+Erro
+   at Program.<>c.<<Main>$>b__0_1() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 42
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 07/03/2023 13:56:51 ID e151ac13-b5b1-4147-b675-a065594c14e8
+Erro
+   at Program.<>c.<<Main>$>b__0_2() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 56
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 07/03/2023 14:14:01 ID d2db1325-2498-4aaf-9bb8-b5123b0057ea
+Erro
+   at Program.<>c.<<Main>$>b__0_2() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 55
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 07/03/2023 14:17:19 ID 60566482-64ef-4d54-a50f-e65475cc39ea
+Erro
+   at Program.<>c.<<Main>$>b__0_2() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 55
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 3/7/2023 2:18:04 PM ID 5dafca4f-a24f-4da2-a7fd-fe62c4789888
+Erro
+   at Program.<>c.<<Main>$>b__0_2() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 55
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 3/7/2023 2:19:13 PM ID a6731b2a-4bb2-4b05-9fc5-852481009295
+Erro
+   at Program.<>c.<<Main>$>b__0_2() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 55
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 3/7/2023 2:19:30 PM ID 5993d8bd-c078-479a-8566-7028ecd1491d
+Erro
+   at Program.<>c.<<Main>$>b__0_2() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 55
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 3/7/2023 2:28:06 PM ID 8d3967f8-c53e-4ba0-b2b0-737fc51f0163
+Erro
+   at Program.<>c.<<Main>$>b__0_2() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 55
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 3/7/2023 2:32:00 PM ID 91ec85b9-f8aa-487e-b209-7407bd09a887
+il n'y a pas de route par défaut dans l'API. Merci d'indiquer une route
+   at Program.<>c.<<Main>$>b__0_2() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 52
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 3/7/2023 2:34:52 PM ID e3f8dc55-f6ed-475a-b7f9-92f020176245
+il n'y a pas de route par défaut dans l'API. Merci d'indiquer une route
+   at Program.<>c.<<Main>$>b__0_2() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 52
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 3/7/2023 2:47:31 PM ID e65ed002-c309-4720-8db3-477f7858abf7
+Il n'y a pas de route par défaut dans l'API. Merci d'indiquer une route
+================ 3/7/2023 2:50:45 PM ID b701e586-4061-4e92-b92b-f57c8e3ac20b
+Il n'y a pas de route par défaut dans l'API. Merci d'indiquer une route
+================ 07/03/2023 14:51:10 ID 44685a5b-0166-489b-b771-57f50df8618b
+Il n'y a pas de route par défaut dans l'API. Merci d'indiquer une route
+================ 07/03/2023 14:58:12 ID a8f1dfd5-076b-4e76-b934-17fd8972301c
+Pas de route pas défaut
+================ 07/03/2023 15:42:32 ID 23441a9a-dcb6-454b-99f7-98c6e791a7dd
+Il n'y a pas de route par défaut dans l'API. Merci d'indiquer une route
+   at Program.<>c.<<Main>$>b__0_2() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 51
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 07/03/2023 15:42:55 ID adcf7b95-4185-455f-a4c1-821ddcb4ddd9
+Il n'y a pas de route par défaut dans l'API. Merci d'indiquer une route
+   at Program.<>c.<<Main>$>b__0_2() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 51
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 07/03/2023 16:08:05 ID e8d4b517-5411-496b-8e45-0671a4b798c0
+Il n'y a pas de route par défaut dans l'API. Merci d'indiquer une route
+   at Program.<>c.<<Main>$>b__0_2() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 51
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 07/03/2023 16:08:38 ID babc90e7-e631-4f6b-b05d-ea5a03beca52
+Il n'y a pas de route par défaut dans l'API. Merci d'indiquer une route
+   at Program.<>c.<<Main>$>b__0_2() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 51
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 3/7/2023 4:09:07 PM ID 2768f9ff-323c-441e-90ff-e78b3e6addab
+Il n'y a pas de route par défaut dans l'API. Merci d'indiquer une route
+   at Program.<>c.<<Main>$>b__0_2() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 51
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 3/7/2023 4:09:54 PM ID 8ef3f578-34e5-414a-94bf-ad409bc16cb5
+Il n'y a pas de route par défaut dans l'API. Merci d'indiquer une route
+   at Program.<>c.<<Main>$>b__0_2() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 51
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 3/7/2023 4:10:03 PM ID 6a76246f-c430-470d-90f1-5e0b952155a4
+Il n'y a pas de route par défaut dans l'API. Merci d'indiquer une route
+   at Program.<>c.<<Main>$>b__0_2() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 51
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 07/03/2023 16:10:41 ID b2cb0cfb-929f-4fbd-88cb-6a9c7858de24
+Il n'y a pas de route par défaut dans l'API. Merci d'indiquer une route
+   at Program.<>c.<<Main>$>b__0_2() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 51
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 07/03/2023 16:10:45 ID 48423f12-a32e-4c89-a81c-cf0ef9913344
+Il n'y a pas de route par défaut dans l'API. Merci d'indiquer une route
+   at Program.<>c.<<Main>$>b__0_2() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 51
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 07/03/2023 16:10:45 ID dbacbc4f-eaae-4dca-866f-af97bed2cf77
+Il n'y a pas de route par défaut dans l'API. Merci d'indiquer une route
+   at Program.<>c.<<Main>$>b__0_2() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 51
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 07/03/2023 16:10:45 ID cb170021-e85e-41eb-a9bf-c306bc0c8d01
+Il n'y a pas de route par défaut dans l'API. Merci d'indiquer une route
+   at Program.<>c.<<Main>$>b__0_2() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 51
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 07/03/2023 16:10:46 ID be2787bd-70d5-4053-910b-29e66e4e58bd
+Il n'y a pas de route par défaut dans l'API. Merci d'indiquer une route
+   at Program.<>c.<<Main>$>b__0_2() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 51
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+================ 07/03/2023 16:10:46 ID d44b6708-f81e-47e1-b237-55e464ef6215
+Il n'y a pas de route par défaut dans l'API. Merci d'indiquer une route
+   at Program.<>c.<<Main>$>b__0_2() in C:\Users\jpfernandez\source\repos\StacktimBCAPI\Program.cs:line 51
+   at lambda_method1(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)

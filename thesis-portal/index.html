@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portail de Thèse - CNAM</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">&#9670;</span>
+                Thèse Doctorat CNAM
+            </a>
+            <button class="nav-toggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active">Accueil</a></li>
+                <li><a href="papers.html" class="nav-link">Papiers</a></li>
+                <li><a href="redactions.html" class="nav-link">Rédactions</a></li>
+                <li><a href="profil.html" class="nav-link">Profil</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <p class="hero-subtitle">Thèse de Doctorat &mdash; CNAM</p>
+            <h1 class="hero-title">Portail de Recherche</h1>
+            <p class="hero-description">
+                Suivi de mes travaux de recherche doctorale au Conservatoire National des Arts et Métiers.
+                Ce portail regroupe mes lectures, rédactions et informations sur l'équipe de recherche.
+            </p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number" id="stat-papers">0</span>
+                    <span class="stat-label">Papiers lus</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" id="stat-redactions">0</span>
+                    <span class="stat-label">Rédactions</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" id="stat-chercheurs">0</span>
+                    <span class="stat-label">Chercheurs</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="section">
+            <h2 class="section-title">Aperçu du projet</h2>
+            <div class="cards-grid">
+                <a href="papers.html" class="card">
+                    <div class="card-icon">&#128214;</div>
+                    <h3>Papiers de Recherche</h3>
+                    <p>Bibliothèque de papiers lus avec résumés, mots-clés et notes critiques pour chaque article.</p>
+                    <span class="card-link">Voir les papiers &rarr;</span>
+                </a>
+                <a href="redactions.html" class="card">
+                    <div class="card-icon">&#9997;</div>
+                    <h3>Mes Rédactions</h3>
+                    <p>Chapitres de thèse, articles soumis et documents de travail en cours de rédaction.</p>
+                    <span class="card-link">Voir les rédactions &rarr;</span>
+                </a>
+                <a href="profil.html" class="card">
+                    <div class="card-icon">&#128101;</div>
+                    <h3>Équipe de Recherche</h3>
+                    <p>Mon profil de doctorant et les chercheurs qui m'accompagnent dans cette thèse.</p>
+                    <span class="card-link">Voir les profils &rarr;</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Dernières activités</h2>
+            <div class="timeline" id="timeline">
+                <!-- Populated by JS from data -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 &mdash; Thèse de Doctorat, Conservatoire National des Arts et Métiers</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

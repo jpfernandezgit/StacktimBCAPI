@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Rédactions - Thèse CNAM</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">&#9670;</span>
+                Thèse Doctorat CNAM
+            </a>
+            <button class="nav-toggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="papers.html" class="nav-link">Papiers</a></li>
+                <li><a href="redactions.html" class="nav-link active">Rédactions</a></li>
+                <li><a href="profil.html" class="nav-link">Profil</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1>Mes Rédactions</h1>
+        <p>Chapitres de thèse, articles et documents de travail en cours.</p>
+    </header>
+
+    <main class="main-content">
+        <section class="section">
+            <div class="filters">
+                <div class="filter-tags">
+                    <button class="filter-tag active" data-filter="all">Tous</button>
+                    <button class="filter-tag" data-filter="chapitre">Chapitres</button>
+                    <button class="filter-tag" data-filter="article">Articles</button>
+                    <button class="filter-tag" data-filter="note">Notes</button>
+                </div>
+            </div>
+
+            <div class="redactions-list" id="redactions-list">
+                <!-- Populated by JS from data/redactions.json -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 &mdash; Thèse de Doctorat, Conservatoire National des Arts et Métiers</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script src="js/redactions.js"></script>
+</body>
+</html>

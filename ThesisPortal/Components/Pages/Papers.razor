@@ -1,0 +1,294 @@
+@page "/papers"
+@inject PaperService PaperService
+
+<PageTitle>Papiers de Recherche - Thèse CNAM</PageTitle>
+
+<header class="page-header">
+    <h1>Papiers de Recherche</h1>
+    <p>Bibliothèque de papiers académiques lus et annotés dans le cadre de ma thèse.</p>
+</header>
+
+<div class="main-content">
+    <section class="section">
+        <div class="section-header-row">
+            <div class="filters">
+                <input type="text" class="search-input" placeholder="Rechercher un papier..."
+                       @bind="searchQuery" @bind:event="oninput" @bind:after="FilterPapers" />
+                <div class="filter-tags">
+                    <button class="filter-tag @(selectedTag == null ? "active" : "")"
+                            @onclick="() => SelectTag(null)">Tous</button>
+                    @foreach (var tag in allTags)
+                    {
+                        <button class="filter-tag @(selectedTag == tag ? "active" : "")"
+                                @onclick="() => SelectTag(tag)">@tag</button>
+                    }
+                </div>
+            </div>
+            <button class="btn btn-primary" @onclick="ShowAddForm">+ Ajouter un papier</button>
+        </div>
+
+        @if (showForm)
+        {
+            <div class="form-card">
+                <h3>@(editingPaper?.Id > 0 ? "Modifier le papier" : "Ajouter un papier")</h3>
+                <EditForm Model="editingPaper" OnValidSubmit="SavePaper">
+                    <DataAnnotationsValidator />
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label>Titre *</label>
+                            <InputText @bind-Value="editingPaper!.Title" class="form-input" />
+                            <ValidationMessage For="() => editingPaper.Title" />
+                        </div>
+                        <div class="form-group">
+                            <label>Auteurs *</label>
+                            <InputText @bind-Value="editingPaper.Authors" class="form-input" />
+                        </div>
+                        <div class="form-group">
+                            <label>Année</label>
+                            <InputNumber @bind-Value="editingPaper.Year" class="form-input" />
+                        </div>
+                        <div class="form-group">
+                            <label>Venue / Conférence</label>
+                            <InputText @bind-Value="editingPaper.Venue" class="form-input" />
+                        </div>
+                        <div class="form-group">
+                            <label>Tags (séparés par des virgules)</label>
+                            <InputText @bind-Value="editingPaper.Tags" class="form-input" />
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Résumé</label>
+                            <InputTextArea @bind-Value="editingPaper.Summary" class="form-input form-textarea" />
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Notes personnelles</label>
+                            <InputTextArea @bind-Value="editingPaper.Notes" class="form-input form-textarea" />
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Résultats clés</label>
+                            <InputTextArea @bind-Value="editingPaper.KeyFindings" class="form-input form-textarea" />
+                        </div>
+                        <div class="form-group">
+                            <label>Date de lecture</label>
+                            <InputDate @bind-Value="editingPaper.DateRead" class="form-input" />
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" @onclick="CancelForm">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </EditForm>
+            </div>
+        }
+
+        <div class="papers-list">
+            @if (!filteredPapers.Any())
+            {
+                <div class="empty-state">
+                    <p>Aucun papier trouvé. Commencez par en ajouter un !</p>
+                </div>
+            }
+            @foreach (var paper in filteredPapers)
+            {
+                <div class="paper-card" @onclick="() => ShowDetail(paper)">
+                    <div class="paper-card-header">
+                        <span class="paper-title">@paper.Title</span>
+                        <span class="paper-year">@paper.Year</span>
+                    </div>
+                    <div class="paper-authors">@paper.Authors</div>
+                    @if (!string.IsNullOrWhiteSpace(paper.Summary))
+                    {
+                        <p class="paper-summary">@Truncate(paper.Summary, 200)</p>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(paper.Tags))
+                    {
+                        <div class="paper-tags">
+                            @foreach (var tag in paper.GetTagsList())
+                            {
+                                <span class="paper-tag">@tag</span>
+                            }
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </section>
+</div>
+
+<!-- Detail Modal -->
+@if (selectedPaper is not null)
+{
+    <div class="modal-overlay active" @onclick="CloseDetail">
+        <div class="modal" @onclick:stopPropagation="true">
+            <button class="modal-close" @onclick="CloseDetail">&times;</button>
+            <h2>@selectedPaper.Title</h2>
+            <div class="paper-authors">@selectedPaper.Authors</div>
+            <div class="modal-meta">
+                @if (selectedPaper.Year.HasValue) { <span>@selectedPaper.Year</span> }
+                @if (!string.IsNullOrWhiteSpace(selectedPaper.Venue)) { <span>@selectedPaper.Venue</span> }
+                @if (selectedPaper.DateRead.HasValue) { <span>Lu le @selectedPaper.DateRead.Value.ToString("dd/MM/yyyy")</span> }
+            </div>
+
+            @if (!string.IsNullOrWhiteSpace(selectedPaper.Summary))
+            {
+                <div class="modal-section">
+                    <h4>Résumé</h4>
+                    <p>@selectedPaper.Summary</p>
+                </div>
+            }
+            @if (!string.IsNullOrWhiteSpace(selectedPaper.KeyFindings))
+            {
+                <div class="modal-section">
+                    <h4>Résultats clés</h4>
+                    <p>@selectedPaper.KeyFindings</p>
+                </div>
+            }
+            @if (!string.IsNullOrWhiteSpace(selectedPaper.Notes))
+            {
+                <div class="modal-section">
+                    <h4>Notes personnelles</h4>
+                    <p>@selectedPaper.Notes</p>
+                </div>
+            }
+            @if (!string.IsNullOrWhiteSpace(selectedPaper.Tags))
+            {
+                <div class="paper-tags" style="margin-top: 1rem;">
+                    @foreach (var tag in selectedPaper.GetTagsList())
+                    {
+                        <span class="paper-tag">@tag</span>
+                    }
+                </div>
+            }
+
+            <div class="modal-actions">
+                <button class="btn btn-secondary" @onclick="() => EditPaper(selectedPaper)">Modifier</button>
+                <button class="btn btn-danger" @onclick="() => DeletePaper(selectedPaper.Id)">Supprimer</button>
+            </div>
+        </div>
+    </div>
+}
+
+<ConfirmDialog IsVisible="showDeleteConfirm"
+               Title="Supprimer le papier"
+               Message="Êtes-vous sûr de vouloir supprimer ce papier ?"
+               OnConfirm="ConfirmDelete"
+               OnCancel="() => { showDeleteConfirm = false; }" />
+
+@code {
+    private List<Paper> allPapers = new();
+    private List<Paper> filteredPapers = new();
+    private List<string> allTags = new();
+    private string? searchQuery;
+    private string? selectedTag;
+    private bool showForm;
+    private Paper? editingPaper;
+    private Paper? selectedPaper;
+    private bool showDeleteConfirm;
+    private int deletingId;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadPapers();
+    }
+
+    private async Task LoadPapers()
+    {
+        allPapers = await PaperService.GetAllAsync();
+        allTags = await PaperService.GetAllTagsAsync();
+        await FilterPapers();
+    }
+
+    private Task FilterPapers()
+    {
+        filteredPapers = allPapers;
+
+        if (!string.IsNullOrWhiteSpace(searchQuery))
+        {
+            var q = searchQuery.ToLower();
+            filteredPapers = filteredPapers.Where(p =>
+                p.Title.ToLower().Contains(q) ||
+                p.Authors.ToLower().Contains(q) ||
+                (p.Summary?.ToLower().Contains(q) ?? false)).ToList();
+        }
+
+        if (!string.IsNullOrWhiteSpace(selectedTag))
+        {
+            filteredPapers = filteredPapers.Where(p =>
+                p.Tags?.Contains(selectedTag) ?? false).ToList();
+        }
+
+        return Task.CompletedTask;
+    }
+
+    private void SelectTag(string? tag)
+    {
+        selectedTag = tag;
+        _ = FilterPapers();
+    }
+
+    private void ShowAddForm()
+    {
+        editingPaper = new Paper { DateRead = DateTime.Today };
+        showForm = true;
+        selectedPaper = null;
+    }
+
+    private void EditPaper(Paper paper)
+    {
+        editingPaper = new Paper
+        {
+            Id = paper.Id,
+            Title = paper.Title,
+            Authors = paper.Authors,
+            Year = paper.Year,
+            Venue = paper.Venue,
+            Tags = paper.Tags,
+            Summary = paper.Summary,
+            Notes = paper.Notes,
+            KeyFindings = paper.KeyFindings,
+            DateRead = paper.DateRead,
+            CreatedAt = paper.CreatedAt
+        };
+        showForm = true;
+        selectedPaper = null;
+    }
+
+    private async Task SavePaper()
+    {
+        if (editingPaper is null) return;
+
+        if (editingPaper.Id > 0)
+            await PaperService.UpdateAsync(editingPaper);
+        else
+            await PaperService.CreateAsync(editingPaper);
+
+        showForm = false;
+        editingPaper = null;
+        await LoadPapers();
+    }
+
+    private void CancelForm()
+    {
+        showForm = false;
+        editingPaper = null;
+    }
+
+    private void ShowDetail(Paper paper) => selectedPaper = paper;
+    private void CloseDetail() => selectedPaper = null;
+
+    private void DeletePaper(int id)
+    {
+        deletingId = id;
+        showDeleteConfirm = true;
+        selectedPaper = null;
+    }
+
+    private async Task ConfirmDelete()
+    {
+        await PaperService.DeleteAsync(deletingId);
+        showDeleteConfirm = false;
+        await LoadPapers();
+    }
+
+    private static string Truncate(string text, int maxLength) =>
+        text.Length <= maxLength ? text : text[..maxLength] + "...";
+}

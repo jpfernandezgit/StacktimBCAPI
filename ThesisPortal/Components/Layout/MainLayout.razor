@@ -1,0 +1,37 @@
+@inherits LayoutComponentBase
+
+<div class="app-layout">
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">
+                <span class="logo-icon">&#9670;</span>
+                Thèse Doctorat CNAM
+            </a>
+            <button class="nav-toggle" @onclick="ToggleMenu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu @(menuOpen ? "active" : "")">
+                <li><NavLink href="/" class="nav-link" Match="NavLinkMatch.All">Accueil</NavLink></li>
+                <li><NavLink href="/papers" class="nav-link">Papiers</NavLink></li>
+                <li><NavLink href="/redactions" class="nav-link">Rédactions</NavLink></li>
+                <li><NavLink href="/profil" class="nav-link">Profil</NavLink></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        @Body
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 &mdash; Thèse de Doctorat, Conservatoire National des Arts et Métiers</p>
+        </div>
+    </footer>
+</div>
+
+@code {
+    private bool menuOpen;
+
+    private void ToggleMenu() => menuOpen = !menuOpen;
+}

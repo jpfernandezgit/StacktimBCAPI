@@ -1,0 +1,100 @@
+@page "/"
+@inject PaperService PaperService
+@inject RedactionService RedactionService
+@inject ResearcherService ResearcherService
+
+<PageTitle>Accueil - Portail de Thèse</PageTitle>
+
+<header class="hero">
+    <div class="hero-content">
+        <p class="hero-subtitle">Thèse de Doctorat &mdash; CNAM</p>
+        <h1 class="hero-title">Portail de Recherche</h1>
+        <p class="hero-description">
+            Suivi de mes travaux de recherche doctorale au Conservatoire National des Arts et Métiers.
+            Ce portail regroupe mes lectures, rédactions et informations sur l'équipe de recherche.
+        </p>
+        <div class="hero-stats">
+            <div class="stat">
+                <span class="stat-number">@paperCount</span>
+                <span class="stat-label">Papiers lus</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">@redactionCount</span>
+                <span class="stat-label">Rédactions</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">@researcherCount</span>
+                <span class="stat-label">Chercheurs</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="main-content">
+    <section class="section">
+        <h2 class="section-title">Aperçu du projet</h2>
+        <div class="cards-grid">
+            <a href="/papers" class="card">
+                <div class="card-icon">&#128214;</div>
+                <h3>Papiers de Recherche</h3>
+                <p>Bibliothèque de papiers lus avec résumés, mots-clés et notes critiques.</p>
+                <span class="card-link">Voir les papiers &rarr;</span>
+            </a>
+            <a href="/redactions" class="card">
+                <div class="card-icon">&#9997;</div>
+                <h3>Mes Rédactions</h3>
+                <p>Chapitres de thèse, articles soumis et documents de travail en cours.</p>
+                <span class="card-link">Voir les rédactions &rarr;</span>
+            </a>
+            <a href="/profil" class="card">
+                <div class="card-icon">&#128101;</div>
+                <h3>Équipe de Recherche</h3>
+                <p>Mon profil de doctorant et les chercheurs qui m'accompagnent.</p>
+                <span class="card-link">Voir les profils &rarr;</span>
+            </a>
+        </div>
+    </section>
+
+    @if (recentPapers.Any())
+    {
+        <section class="section">
+            <h2 class="section-title">Derniers papiers lus</h2>
+            <div class="papers-list">
+                @foreach (var paper in recentPapers)
+                {
+                    <div class="paper-card">
+                        <div class="paper-card-header">
+                            <span class="paper-title">@paper.Title</span>
+                            <span class="paper-year">@paper.Year</span>
+                        </div>
+                        <div class="paper-authors">@paper.Authors</div>
+                        @if (!string.IsNullOrWhiteSpace(paper.Summary))
+                        {
+                            <p class="paper-summary">@Truncate(paper.Summary, 150)</p>
+                        }
+                    </div>
+                }
+            </div>
+        </section>
+    }
+</div>
+
+@code {
+    private int paperCount;
+    private int redactionCount;
+    private int researcherCount;
+    private List<Paper> recentPapers = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        paperCount = await PaperService.GetCountAsync();
+        redactionCount = await RedactionService.GetCountAsync();
+        researcherCount = await ResearcherService.GetCountAsync();
+
+        var allPapers = await PaperService.GetAllAsync();
+        recentPapers = allPapers.Take(3).ToList();
+    }
+
+    private static string Truncate(string text, int maxLength) =>
+        text.Length <= maxLength ? text : text[..maxLength] + "...";
+}

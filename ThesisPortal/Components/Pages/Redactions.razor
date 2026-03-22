@@ -1,0 +1,208 @@
+@page "/redactions"
+@inject RedactionService RedactionService
+
+<PageTitle>Mes Rédactions - Thèse CNAM</PageTitle>
+
+<header class="page-header">
+    <h1>Mes Rédactions</h1>
+    <p>Chapitres de thèse, articles et documents de travail en cours.</p>
+</header>
+
+<div class="main-content">
+    <section class="section">
+        <div class="section-header-row">
+            <div class="filter-tags">
+                <button class="filter-tag @(selectedType == null ? "active" : "")"
+                        @onclick="() => SelectType(null)">Tous</button>
+                <button class="filter-tag @(selectedType == RedactionType.Chapitre ? "active" : "")"
+                        @onclick="() => SelectType(RedactionType.Chapitre)">Chapitres</button>
+                <button class="filter-tag @(selectedType == RedactionType.Article ? "active" : "")"
+                        @onclick="() => SelectType(RedactionType.Article)">Articles</button>
+                <button class="filter-tag @(selectedType == RedactionType.Note ? "active" : "")"
+                        @onclick="() => SelectType(RedactionType.Note)">Notes</button>
+            </div>
+            <button class="btn btn-primary" @onclick="ShowAddForm">+ Nouvelle rédaction</button>
+        </div>
+
+        @if (showForm)
+        {
+            <div class="form-card">
+                <h3>@(editingRedaction?.Id > 0 ? "Modifier la rédaction" : "Nouvelle rédaction")</h3>
+                <EditForm Model="editingRedaction" OnValidSubmit="SaveRedaction">
+                    <DataAnnotationsValidator />
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label>Titre *</label>
+                            <InputText @bind-Value="editingRedaction!.Title" class="form-input" />
+                            <ValidationMessage For="() => editingRedaction.Title" />
+                        </div>
+                        <div class="form-group">
+                            <label>Type</label>
+                            <InputSelect @bind-Value="editingRedaction.Type" class="form-input">
+                                <option value="@RedactionType.Chapitre">Chapitre</option>
+                                <option value="@RedactionType.Article">Article</option>
+                                <option value="@RedactionType.Note">Note</option>
+                            </InputSelect>
+                        </div>
+                        <div class="form-group">
+                            <label>Statut</label>
+                            <InputSelect @bind-Value="editingRedaction.Status" class="form-input">
+                                <option value="@RedactionStatus.Brouillon">Brouillon</option>
+                                <option value="@RedactionStatus.EnCours">En cours</option>
+                                <option value="@RedactionStatus.Termine">Terminé</option>
+                                <option value="@RedactionStatus.Soumis">Soumis</option>
+                            </InputSelect>
+                        </div>
+                        <div class="form-group">
+                            <label>Progression (%)</label>
+                            <InputNumber @bind-Value="editingRedaction.Progress" class="form-input" min="0" max="100" />
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Résumé / Extrait</label>
+                            <InputTextArea @bind-Value="editingRedaction.Excerpt" class="form-input form-textarea" />
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Contenu</label>
+                            <InputTextArea @bind-Value="editingRedaction.Content" class="form-input form-textarea tall" />
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" @onclick="CancelForm">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </EditForm>
+            </div>
+        }
+
+        <div class="redactions-list">
+            @if (!filteredRedactions.Any())
+            {
+                <div class="empty-state">
+                    <p>Aucune rédaction trouvée. Commencez par en créer une !</p>
+                </div>
+            }
+            @foreach (var redaction in filteredRedactions)
+            {
+                <div class="redaction-card">
+                    <span class="redaction-type @redaction.Type.ToString().ToLower()">@redaction.Type</span>
+                    <h3 class="redaction-title">@redaction.Title</h3>
+                    <div class="redaction-date">Mis à jour le @redaction.UpdatedAt.ToString("dd/MM/yyyy")</div>
+                    @if (!string.IsNullOrWhiteSpace(redaction.Excerpt))
+                    {
+                        <p class="redaction-excerpt">@Truncate(redaction.Excerpt, 180)</p>
+                    }
+                    <div class="redaction-status">
+                        <span class="status-dot @redaction.Status.ToString().ToLower()"></span>
+                        <span>@redaction.StatusDisplay</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: @(redaction.Progress)%"></div>
+                        </div>
+                        <span>@redaction.Progress%</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-sm btn-secondary" @onclick="() => EditRedaction(redaction)">Modifier</button>
+                        <button class="btn btn-sm btn-danger" @onclick="() => DeleteRedaction(redaction.Id)">Supprimer</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+</div>
+
+<ConfirmDialog IsVisible="showDeleteConfirm"
+               Title="Supprimer la rédaction"
+               Message="Êtes-vous sûr de vouloir supprimer cette rédaction ?"
+               OnConfirm="ConfirmDelete"
+               OnCancel="() => { showDeleteConfirm = false; }" />
+
+@code {
+    private List<Redaction> allRedactions = new();
+    private List<Redaction> filteredRedactions = new();
+    private RedactionType? selectedType;
+    private bool showForm;
+    private Redaction? editingRedaction;
+    private bool showDeleteConfirm;
+    private int deletingId;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadRedactions();
+    }
+
+    private async Task LoadRedactions()
+    {
+        allRedactions = await RedactionService.GetAllAsync();
+        FilterRedactions();
+    }
+
+    private void FilterRedactions()
+    {
+        filteredRedactions = selectedType.HasValue
+            ? allRedactions.Where(r => r.Type == selectedType.Value).ToList()
+            : allRedactions;
+    }
+
+    private void SelectType(RedactionType? type)
+    {
+        selectedType = type;
+        FilterRedactions();
+    }
+
+    private void ShowAddForm()
+    {
+        editingRedaction = new Redaction();
+        showForm = true;
+    }
+
+    private void EditRedaction(Redaction redaction)
+    {
+        editingRedaction = new Redaction
+        {
+            Id = redaction.Id,
+            Title = redaction.Title,
+            Type = redaction.Type,
+            Status = redaction.Status,
+            Progress = redaction.Progress,
+            Excerpt = redaction.Excerpt,
+            Content = redaction.Content,
+            CreatedAt = redaction.CreatedAt
+        };
+        showForm = true;
+    }
+
+    private async Task SaveRedaction()
+    {
+        if (editingRedaction is null) return;
+
+        if (editingRedaction.Id > 0)
+            await RedactionService.UpdateAsync(editingRedaction);
+        else
+            await RedactionService.CreateAsync(editingRedaction);
+
+        showForm = false;
+        editingRedaction = null;
+        await LoadRedactions();
+    }
+
+    private void CancelForm()
+    {
+        showForm = false;
+        editingRedaction = null;
+    }
+
+    private void DeleteRedaction(int id)
+    {
+        deletingId = id;
+        showDeleteConfirm = true;
+    }
+
+    private async Task ConfirmDelete()
+    {
+        await RedactionService.DeleteAsync(deletingId);
+        showDeleteConfirm = false;
+        await LoadRedactions();
+    }
+
+    private static string Truncate(string text, int maxLength) =>
+        text.Length <= maxLength ? text : text[..maxLength] + "...";
+}

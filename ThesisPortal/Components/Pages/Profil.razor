@@ -1,0 +1,281 @@
+@page "/profil"
+@inject ResearcherService ResearcherService
+
+<PageTitle>Profil & Équipe - Thèse CNAM</PageTitle>
+
+<header class="page-header">
+    <h1>Profil & Équipe de Recherche</h1>
+    <p>Présentation du doctorant et des chercheurs encadrants.</p>
+</header>
+
+<div class="main-content">
+    <!-- Doctorant Section -->
+    <section class="section">
+        <div class="section-header-row">
+            <h2 class="section-title">Le Doctorant</h2>
+            @if (doctorant is not null)
+            {
+                <button class="btn btn-secondary btn-sm" @onclick="() => EditResearcher(doctorant)">Modifier</button>
+            }
+        </div>
+
+        @if (doctorant is not null)
+        {
+            <div class="profile-card profile-main">
+                <div class="profile-avatar">
+                    <div class="avatar-placeholder large">@doctorant.Initials</div>
+                </div>
+                <div class="profile-info">
+                    <h3>@doctorant.Name</h3>
+                    <p class="profile-role">@doctorant.Role</p>
+                    <p class="profile-affiliation">@doctorant.Affiliation</p>
+                    <div class="profile-details">
+                        @if (!string.IsNullOrWhiteSpace(doctorant.ThesisSubject))
+                        {
+                            <div class="detail-item">
+                                <strong>Sujet de thèse :</strong>
+                                <p>@doctorant.ThesisSubject</p>
+                            </div>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(doctorant.Lab))
+                        {
+                            <div class="detail-item">
+                                <strong>Laboratoire :</strong>
+                                <p>@doctorant.Lab</p>
+                            </div>
+                        }
+                        @if (doctorant.StartDate.HasValue)
+                        {
+                            <div class="detail-item">
+                                <strong>Date de début :</strong>
+                                <p>@doctorant.StartDate.Value.ToString("MMMM yyyy")</p>
+                            </div>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(doctorant.Bio))
+                        {
+                            <div class="detail-item">
+                                <strong>Bio :</strong>
+                                <p>@doctorant.Bio</p>
+                            </div>
+                        }
+                    </div>
+                    <div class="profile-links">
+                        @if (!string.IsNullOrWhiteSpace(doctorant.Website))
+                        {
+                            <a href="@doctorant.Website" target="_blank" class="profile-link">Site web</a>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(doctorant.LinkedIn))
+                        {
+                            <a href="@doctorant.LinkedIn" target="_blank" class="profile-link">LinkedIn</a>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(doctorant.GoogleScholar))
+                        {
+                            <a href="@doctorant.GoogleScholar" target="_blank" class="profile-link">Google Scholar</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </section>
+
+    <!-- Encadrants Section -->
+    <section class="section">
+        <div class="section-header-row">
+            <h2 class="section-title">Encadrants & Chercheurs</h2>
+            <button class="btn btn-primary" @onclick="ShowAddForm">+ Ajouter un chercheur</button>
+        </div>
+
+        @if (showForm)
+        {
+            <div class="form-card">
+                <h3>@(editingResearcher?.Id > 0 ? "Modifier le chercheur" : "Ajouter un chercheur")</h3>
+                <EditForm Model="editingResearcher" OnValidSubmit="SaveResearcher">
+                    <DataAnnotationsValidator />
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Nom complet *</label>
+                            <InputText @bind-Value="editingResearcher!.Name" class="form-input" />
+                        </div>
+                        <div class="form-group">
+                            <label>Initiales</label>
+                            <InputText @bind-Value="editingResearcher.Initials" class="form-input" />
+                        </div>
+                        <div class="form-group">
+                            <label>Rôle</label>
+                            <InputText @bind-Value="editingResearcher.Role" class="form-input" />
+                        </div>
+                        <div class="form-group">
+                            <label>Affiliation</label>
+                            <InputText @bind-Value="editingResearcher.Affiliation" class="form-input" />
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Bio</label>
+                            <InputTextArea @bind-Value="editingResearcher.Bio" class="form-input form-textarea" />
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Expertise (séparées par des virgules)</label>
+                            <InputText @bind-Value="editingResearcher.Expertise" class="form-input" />
+                        </div>
+                        @if (editingResearcher.IsDoctorant)
+                        {
+                            <div class="form-group full-width">
+                                <label>Sujet de thèse</label>
+                                <InputText @bind-Value="editingResearcher.ThesisSubject" class="form-input" />
+                            </div>
+                            <div class="form-group">
+                                <label>Laboratoire</label>
+                                <InputText @bind-Value="editingResearcher.Lab" class="form-input" />
+                            </div>
+                            <div class="form-group">
+                                <label>Date de début</label>
+                                <InputDate @bind-Value="editingResearcher.StartDate" class="form-input" />
+                            </div>
+                        }
+                        <div class="form-group">
+                            <label>Site web</label>
+                            <InputText @bind-Value="editingResearcher.Website" class="form-input" />
+                        </div>
+                        <div class="form-group">
+                            <label>LinkedIn</label>
+                            <InputText @bind-Value="editingResearcher.LinkedIn" class="form-input" />
+                        </div>
+                        <div class="form-group">
+                            <label>Google Scholar</label>
+                            <InputText @bind-Value="editingResearcher.GoogleScholar" class="form-input" />
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" @onclick="CancelForm">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </EditForm>
+            </div>
+        }
+
+        <div class="researchers-grid">
+            @if (!encadrants.Any())
+            {
+                <div class="empty-state">
+                    <p>Aucun encadrant ajouté. Cliquez sur "Ajouter un chercheur" pour commencer.</p>
+                </div>
+            }
+            @foreach (var researcher in encadrants)
+            {
+                <div class="researcher-card">
+                    <div class="researcher-header">
+                        <div class="researcher-avatar">@researcher.Initials</div>
+                        <div>
+                            <div class="researcher-name">@researcher.Name</div>
+                            <div class="researcher-role">@researcher.Role</div>
+                        </div>
+                    </div>
+                    @if (!string.IsNullOrWhiteSpace(researcher.Bio))
+                    {
+                        <p class="researcher-bio">@researcher.Bio</p>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(researcher.Expertise))
+                    {
+                        <div class="researcher-expertise">
+                            @foreach (var exp in researcher.GetExpertiseList())
+                            {
+                                <span class="expertise-tag">@exp</span>
+                            }
+                        </div>
+                    }
+                    <div class="card-actions">
+                        <button class="btn btn-sm btn-secondary" @onclick="() => EditResearcher(researcher)">Modifier</button>
+                        <button class="btn btn-sm btn-danger" @onclick="() => DeleteResearcher(researcher.Id)">Supprimer</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+</div>
+
+<ConfirmDialog IsVisible="showDeleteConfirm"
+               Title="Supprimer le chercheur"
+               Message="Êtes-vous sûr de vouloir supprimer ce chercheur ?"
+               OnConfirm="ConfirmDelete"
+               OnCancel="() => { showDeleteConfirm = false; }" />
+
+@code {
+    private Researcher? doctorant;
+    private List<Researcher> encadrants = new();
+    private bool showForm;
+    private Researcher? editingResearcher;
+    private bool showDeleteConfirm;
+    private int deletingId;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadData();
+    }
+
+    private async Task LoadData()
+    {
+        doctorant = await ResearcherService.GetDoctorantAsync();
+        encadrants = await ResearcherService.GetEncadrantsAsync();
+    }
+
+    private void ShowAddForm()
+    {
+        editingResearcher = new Researcher { IsDoctorant = false };
+        showForm = true;
+    }
+
+    private void EditResearcher(Researcher researcher)
+    {
+        editingResearcher = new Researcher
+        {
+            Id = researcher.Id,
+            Name = researcher.Name,
+            Initials = researcher.Initials,
+            Role = researcher.Role,
+            Affiliation = researcher.Affiliation,
+            Bio = researcher.Bio,
+            Expertise = researcher.Expertise,
+            Website = researcher.Website,
+            LinkedIn = researcher.LinkedIn,
+            GoogleScholar = researcher.GoogleScholar,
+            IsDoctorant = researcher.IsDoctorant,
+            ThesisSubject = researcher.ThesisSubject,
+            Lab = researcher.Lab,
+            StartDate = researcher.StartDate,
+            CreatedAt = researcher.CreatedAt
+        };
+        showForm = true;
+    }
+
+    private async Task SaveResearcher()
+    {
+        if (editingResearcher is null) return;
+
+        if (editingResearcher.Id > 0)
+            await ResearcherService.UpdateAsync(editingResearcher);
+        else
+            await ResearcherService.CreateAsync(editingResearcher);
+
+        showForm = false;
+        editingResearcher = null;
+        await LoadData();
+    }
+
+    private void CancelForm()
+    {
+        showForm = false;
+        editingResearcher = null;
+    }
+
+    private void DeleteResearcher(int id)
+    {
+        deletingId = id;
+        showDeleteConfirm = true;
+    }
+
+    private async Task ConfirmDelete()
+    {
+        await ResearcherService.DeleteAsync(deletingId);
+        showDeleteConfirm = false;
+        await LoadData();
+    }
+}

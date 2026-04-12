@@ -1,0 +1,63 @@
+{
+  "onboarding": {
+    "title1": "私たちは孤独なのか？",
+    "body2": "あなたのスマートフォンは、人類を月に送ったコンピュータよりも強力です。\n\n数百万台のスマートフォンが集まれば、スーパーコンピュータになります。",
+    "body3": "毎晩、あなたが眠っている間に、スマートフォンが宇宙に耳を澄まします。\n\n彼らを見つけるのは、あなたかもしれません。"
+    ,"next": "次へ",
+    "start": "聴き始める"
+  },
+  "home": {
+    "listeningNow": "{{count}} 台のスマートフォンが聴いています",
+    "startListening": "聴き始める",
+    "listening": "聴取中…",
+    "sector": "セクター {{sector}}",
+    "needsCharging": "充電しながら参加してください。",
+    "needsWifi": "Wi-Fi に接続して参加してください。"
+  },
+  "network": {
+    "title": "ネットワーク",
+    "countries": "{{count}} カ国",
+    "phones": "{{count}} 台",
+    "flops": "{{value}} ペタフロップス",
+    "sectors": "{{count}} セクターをスキャン済み"
+  },
+  "discoveries": {
+    "title": "発見",
+    "empty": "まだ異常はありません。聴き続けてください。",
+    "statusVerifying": "検証中",
+    "statusResolved": "解決済み",
+    "statusCritical": "重大",
+    "detectedBy": "{{count}} 台が検出",
+    "score": "スコア"
+  },
+  "profile": {
+    "title": "あなたの貢献",
+    "listeningSince": "開始日",
+    "totalHours": "貢献時間",
+    "packets": "解析パケット",
+    "anomalies": "検出した異常",
+    "coverage": "空のカバー率",
+    "globalRank": "世界ランキング",
+    "countryRank": "国内ランキング"
+  },
+  "settings": {
+    "title": "設定",
+    "quietHours": "聴取時間",
+    "wifiOnly": "Wi-Fi のみ",
+    "chargingOnly": "充電中のみ",
+    "notifications": "異常通知",
+    "language": "言語",
+    "dataLimit": "夜間データ上限",
+    "transparency": "データの使用方法",
+    "learnMore": "LISTEN の仕組み",
+    "credits": "クレジットとライセンス"
+  },
+  "common": {
+    "yes": "はい",
+    "no": "いいえ",
+    "on": "オン",
+    "off": "オフ",
+    "cancel": "キャンセル",
+    "save": "保存"
+  }
+}

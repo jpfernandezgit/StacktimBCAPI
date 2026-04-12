@@ -1,0 +1,63 @@
+{
+  "onboarding": {
+    "title1": "Sind wir allein?",
+    "body2": "Dein Handy ist leistungsfähiger als die Computer, die uns zum Mond brachten.\n\nZusammen werden Millionen von Handys zu einem Supercomputer.",
+    "body3": "Jede Nacht, während du schläfst, wird dein Handy dem Universum zuhören.\n\nDu könntest derjenige sein, der sie findet.",
+    "next": "Weiter",
+    "start": "Zuhören starten"
+  },
+  "home": {
+    "listeningNow": "{{count}} Handys hören gerade zu",
+    "startListening": "ZUHÖREN STARTEN",
+    "listening": "HÖRT ZU…",
+    "sector": "Sektor {{sector}}",
+    "needsCharging": "Schließe dein Handy an, um mitzumachen.",
+    "needsWifi": "Verbinde dich mit WLAN, um mitzumachen."
+  },
+  "network": {
+    "title": "Das Netzwerk",
+    "countries": "{{count}} Länder",
+    "phones": "{{count}} Handys",
+    "flops": "{{value}} PetaFLOPS",
+    "sectors": "{{count}} Himmelssektoren gescannt"
+  },
+  "discoveries": {
+    "title": "Entdeckungen",
+    "empty": "Noch keine Anomalien. Hör weiter zu.",
+    "statusVerifying": "Überprüfung läuft",
+    "statusResolved": "Aufgeklärt",
+    "statusCritical": "Kritisch",
+    "detectedBy": "Erkannt von {{count}} Handys",
+    "score": "Punktzahl"
+  },
+  "profile": {
+    "title": "Mein Beitrag",
+    "listeningSince": "Hört zu seit",
+    "totalHours": "Beigetragene Stunden",
+    "packets": "Analysierte Pakete",
+    "anomalies": "Entdeckte Anomalien",
+    "coverage": "Himmelsabdeckung",
+    "globalRank": "Globale Position",
+    "countryRank": "Position im Land"
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "quietHours": "Zuhören zwischen",
+    "wifiOnly": "Nur WLAN",
+    "chargingOnly": "Nur beim Laden",
+    "notifications": "Anomalie-Benachrichtigungen",
+    "language": "Sprache",
+    "dataLimit": "Nächtliches Datenlimit",
+    "transparency": "Wie deine Daten verwendet werden",
+    "learnMore": "Wie LISTEN funktioniert",
+    "credits": "Credits & Lizenzen"
+  },
+  "common": {
+    "yes": "Ja",
+    "no": "Nein",
+    "on": "An",
+    "off": "Aus",
+    "cancel": "Abbrechen",
+    "save": "Speichern"
+  }
+}

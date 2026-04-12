@@ -1,0 +1,63 @@
+{
+  "onboarding": {
+    "title1": "¿Estamos solos?",
+    "body2": "Tu teléfono es más potente que los ordenadores que nos llevaron a la Luna.\n\nJuntos, millones de teléfonos se convierten en un superordenador.",
+    "body3": "Cada noche, mientras duermes, tu teléfono escuchará el universo.\n\nPodrías ser quien los encuentre.",
+    "next": "Siguiente",
+    "start": "Empezar a escuchar"
+  },
+  "home": {
+    "listeningNow": "{{count}} teléfonos escuchando ahora",
+    "startListening": "EMPEZAR A ESCUCHAR",
+    "listening": "ESCUCHANDO…",
+    "sector": "Sector {{sector}}",
+    "needsCharging": "Conecta el cargador para unirte a la búsqueda.",
+    "needsWifi": "Conéctate al Wi-Fi para unirte a la búsqueda."
+  },
+  "network": {
+    "title": "La Red",
+    "countries": "{{count}} países",
+    "phones": "{{count}} teléfonos",
+    "flops": "{{value}} PetaFLOPS",
+    "sectors": "{{count}} sectores del cielo escaneados"
+  },
+  "discoveries": {
+    "title": "Descubrimientos",
+    "empty": "Sin anomalías aún. Sigue escuchando.",
+    "statusVerifying": "Verificación en curso",
+    "statusResolved": "Resuelta",
+    "statusCritical": "Crítica",
+    "detectedBy": "Detectada por {{count}} teléfonos",
+    "score": "Puntuación"
+  },
+  "profile": {
+    "title": "Mi Impacto",
+    "listeningSince": "Escuchando desde",
+    "totalHours": "Horas contribuidas",
+    "packets": "Paquetes analizados",
+    "anomalies": "Anomalías detectadas",
+    "coverage": "Cobertura del cielo",
+    "globalRank": "Ranking global",
+    "countryRank": "Ranking nacional"
+  },
+  "settings": {
+    "title": "Ajustes",
+    "quietHours": "Escuchar entre",
+    "wifiOnly": "Solo Wi-Fi",
+    "chargingOnly": "Solo cargando",
+    "notifications": "Notificaciones de anomalías",
+    "language": "Idioma",
+    "dataLimit": "Límite de datos nocturno",
+    "transparency": "Cómo se usan tus datos",
+    "learnMore": "Descubre cómo funciona LISTEN",
+    "credits": "Créditos y licencias"
+  },
+  "common": {
+    "yes": "Sí",
+    "no": "No",
+    "on": "Activado",
+    "off": "Desactivado",
+    "cancel": "Cancelar",
+    "save": "Guardar"
+  }
+}

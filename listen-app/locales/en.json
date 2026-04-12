@@ -1,0 +1,63 @@
+{
+  "onboarding": {
+    "title1": "Are we alone?",
+    "body2": "Your phone has more power than the computers that landed us on the Moon.\n\nTogether, millions of phones become a supercomputer.",
+    "body3": "Every night, while you sleep, your phone will listen to the universe.\n\nYou might be the one who finds them.",
+    "next": "Next",
+    "start": "Start listening"
+  },
+  "home": {
+    "listeningNow": "{{count}} phones listening now",
+    "startListening": "START LISTENING",
+    "listening": "LISTENING…",
+    "sector": "Sector {{sector}}",
+    "needsCharging": "Plug in your phone to join the search.",
+    "needsWifi": "Connect to Wi-Fi to join the search."
+  },
+  "network": {
+    "title": "The Network",
+    "countries": "{{count}} countries",
+    "phones": "{{count}} phones",
+    "flops": "{{value}} PetaFLOPS",
+    "sectors": "{{count}} sky sectors scanned"
+  },
+  "discoveries": {
+    "title": "Discoveries",
+    "empty": "No anomalies yet. Keep listening.",
+    "statusVerifying": "Verification in progress",
+    "statusResolved": "Resolved",
+    "statusCritical": "Critical",
+    "detectedBy": "Detected by {{count}} phones",
+    "score": "Score"
+  },
+  "profile": {
+    "title": "My Impact",
+    "listeningSince": "Listening since",
+    "totalHours": "Hours contributed",
+    "packets": "Packets analyzed",
+    "anomalies": "Anomalies detected",
+    "coverage": "Sky coverage",
+    "globalRank": "Global rank",
+    "countryRank": "Country rank"
+  },
+  "settings": {
+    "title": "Settings",
+    "quietHours": "Listen between",
+    "wifiOnly": "Wi-Fi only",
+    "chargingOnly": "Only while charging",
+    "notifications": "Anomaly notifications",
+    "language": "Language",
+    "dataLimit": "Nightly data limit",
+    "transparency": "How your data is used",
+    "learnMore": "Understand how LISTEN works",
+    "credits": "Credits & licenses"
+  },
+  "common": {
+    "yes": "Yes",
+    "no": "No",
+    "on": "On",
+    "off": "Off",
+    "cancel": "Cancel",
+    "save": "Save"
+  }
+}

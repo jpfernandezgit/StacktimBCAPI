@@ -1,0 +1,63 @@
+{
+  "onboarding": {
+    "title1": "Sommes-nous seuls ?",
+    "body2": "Votre téléphone est plus puissant que les ordinateurs qui nous ont posés sur la Lune.\n\nEnsemble, des millions de téléphones deviennent un superordinateur.",
+    "body3": "Chaque nuit, pendant votre sommeil, votre téléphone écoutera l'univers.\n\nVous pourriez être celui qui les trouvera.",
+    "next": "Suivant",
+    "start": "Commencer à écouter"
+  },
+  "home": {
+    "listeningNow": "{{count}} téléphones à l'écoute",
+    "startListening": "COMMENCER",
+    "listening": "À L'ÉCOUTE…",
+    "sector": "Secteur {{sector}}",
+    "needsCharging": "Branchez votre téléphone pour rejoindre la recherche.",
+    "needsWifi": "Connectez-vous au Wi-Fi pour rejoindre la recherche."
+  },
+  "network": {
+    "title": "Le Réseau",
+    "countries": "{{count}} pays",
+    "phones": "{{count}} téléphones",
+    "flops": "{{value}} PetaFLOPS",
+    "sectors": "{{count}} secteurs du ciel analysés"
+  },
+  "discoveries": {
+    "title": "Découvertes",
+    "empty": "Aucune anomalie pour l'instant. Continuez à écouter.",
+    "statusVerifying": "Vérification en cours",
+    "statusResolved": "Résolue",
+    "statusCritical": "Critique",
+    "detectedBy": "Détectée par {{count}} téléphones",
+    "score": "Score"
+  },
+  "profile": {
+    "title": "Mon Impact",
+    "listeningSince": "À l'écoute depuis",
+    "totalHours": "Heures contribuées",
+    "packets": "Paquets analysés",
+    "anomalies": "Anomalies détectées",
+    "coverage": "Couverture du ciel",
+    "globalRank": "Classement mondial",
+    "countryRank": "Classement national"
+  },
+  "settings": {
+    "title": "Paramètres",
+    "quietHours": "Écouter entre",
+    "wifiOnly": "Wi-Fi uniquement",
+    "chargingOnly": "Uniquement en charge",
+    "notifications": "Notifications d'anomalies",
+    "language": "Langue",
+    "dataLimit": "Limite de données par nuit",
+    "transparency": "Comment vos données sont utilisées",
+    "learnMore": "Comprendre LISTEN",
+    "credits": "Crédits & licences"
+  },
+  "common": {
+    "yes": "Oui",
+    "no": "Non",
+    "on": "Activé",
+    "off": "Désactivé",
+    "cancel": "Annuler",
+    "save": "Enregistrer"
+  }
+}

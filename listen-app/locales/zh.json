@@ -1,0 +1,63 @@
+{
+  "onboarding": {
+    "title1": "我们孤独吗？",
+    "body2": "你的手机比当年把人类送上月球的计算机更强大。\n\n数百万部手机汇聚成一台超级计算机。",
+    "body3": "每一个夜晚，当你入睡时，你的手机将聆听宇宙。\n\n也许发现他们的，就是你。",
+    "next": "下一步",
+    "start": "开始聆听"
+  },
+  "home": {
+    "listeningNow": "{{count}} 部手机正在聆听",
+    "startListening": "开始聆听",
+    "listening": "聆听中…",
+    "sector": "星区 {{sector}}",
+    "needsCharging": "请连接充电器加入搜索。",
+    "needsWifi": "请连接 Wi-Fi 加入搜索。"
+  },
+  "network": {
+    "title": "网络",
+    "countries": "{{count}} 个国家",
+    "phones": "{{count}} 部手机",
+    "flops": "{{value}} 千万亿次",
+    "sectors": "已扫描 {{count}} 个星区"
+  },
+  "discoveries": {
+    "title": "发现",
+    "empty": "尚未发现异常。请继续聆听。",
+    "statusVerifying": "正在验证",
+    "statusResolved": "已解决",
+    "statusCritical": "紧急",
+    "detectedBy": "{{count}} 部手机检测到",
+    "score": "分数"
+  },
+  "profile": {
+    "title": "我的贡献",
+    "listeningSince": "开始于",
+    "totalHours": "贡献时长",
+    "packets": "分析数据包",
+    "anomalies": "检测到的异常",
+    "coverage": "天空覆盖率",
+    "globalRank": "全球排名",
+    "countryRank": "国家排名"
+  },
+  "settings": {
+    "title": "设置",
+    "quietHours": "聆听时段",
+    "wifiOnly": "仅 Wi-Fi",
+    "chargingOnly": "仅在充电时",
+    "notifications": "异常通知",
+    "language": "语言",
+    "dataLimit": "每晚数据上限",
+    "transparency": "数据使用说明",
+    "learnMore": "了解 LISTEN",
+    "credits": "致谢与许可"
+  },
+  "common": {
+    "yes": "是",
+    "no": "否",
+    "on": "开",
+    "off": "关",
+    "cancel": "取消",
+    "save": "保存"
+  }
+}

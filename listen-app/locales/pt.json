@@ -1,0 +1,63 @@
+{
+  "onboarding": {
+    "title1": "Estamos sozinhos?",
+    "body2": "Seu celular tem mais poder do que os computadores que nos levaram à Lua.\n\nJuntos, milhões de celulares se tornam um supercomputador.",
+    "body3": "Toda noite, enquanto você dorme, seu celular ouvirá o universo.\n\nVocê pode ser quem vai encontrá-los.",
+    "next": "Avançar",
+    "start": "Começar a ouvir"
+  },
+  "home": {
+    "listeningNow": "{{count}} celulares ouvindo agora",
+    "startListening": "COMEÇAR A OUVIR",
+    "listening": "OUVINDO…",
+    "sector": "Setor {{sector}}",
+    "needsCharging": "Conecte seu celular para entrar na busca.",
+    "needsWifi": "Conecte-se ao Wi-Fi para entrar na busca."
+  },
+  "network": {
+    "title": "A Rede",
+    "countries": "{{count}} países",
+    "phones": "{{count}} celulares",
+    "flops": "{{value}} PetaFLOPS",
+    "sectors": "{{count}} setores do céu escaneados"
+  },
+  "discoveries": {
+    "title": "Descobertas",
+    "empty": "Nenhuma anomalia ainda. Continue ouvindo.",
+    "statusVerifying": "Verificação em andamento",
+    "statusResolved": "Resolvida",
+    "statusCritical": "Crítica",
+    "detectedBy": "Detectada por {{count}} celulares",
+    "score": "Pontuação"
+  },
+  "profile": {
+    "title": "Meu Impacto",
+    "listeningSince": "Ouvindo desde",
+    "totalHours": "Horas contribuídas",
+    "packets": "Pacotes analisados",
+    "anomalies": "Anomalias detectadas",
+    "coverage": "Cobertura do céu",
+    "globalRank": "Ranking global",
+    "countryRank": "Ranking no país"
+  },
+  "settings": {
+    "title": "Configurações",
+    "quietHours": "Ouvir entre",
+    "wifiOnly": "Apenas Wi-Fi",
+    "chargingOnly": "Apenas carregando",
+    "notifications": "Notificações de anomalias",
+    "language": "Idioma",
+    "dataLimit": "Limite de dados por noite",
+    "transparency": "Como seus dados são usados",
+    "learnMore": "Entenda como o LISTEN funciona",
+    "credits": "Créditos & licenças"
+  },
+  "common": {
+    "yes": "Sim",
+    "no": "Não",
+    "on": "Ligado",
+    "off": "Desligado",
+    "cancel": "Cancelar",
+    "save": "Salvar"
+  }
+}

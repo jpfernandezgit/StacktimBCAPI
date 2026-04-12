@@ -1,0 +1,63 @@
+{
+  "onboarding": {
+    "title1": "هل نحن وحدنا؟",
+    "body2": "هاتفك أقوى من الحواسيب التي أنزلتنا على القمر.\n\nملايين الهواتف معًا تتحول إلى حاسوب عملاق.",
+    "body3": "كل ليلة، بينما تنام، سيصغي هاتفك إلى الكون.\n\nقد تكون أنت من يكتشفهم.",
+    "next": "التالي",
+    "start": "ابدأ الإصغاء"
+  },
+  "home": {
+    "listeningNow": "{{count}} هاتفًا يصغي الآن",
+    "startListening": "ابدأ الإصغاء",
+    "listening": "يصغي…",
+    "sector": "القطاع {{sector}}",
+    "needsCharging": "وصّل هاتفك بالشاحن للانضمام إلى البحث.",
+    "needsWifi": "اتصل بشبكة Wi-Fi للانضمام إلى البحث."
+  },
+  "network": {
+    "title": "الشبكة",
+    "countries": "{{count}} دولة",
+    "phones": "{{count}} هاتفًا",
+    "flops": "{{value}} بيتافلوبس",
+    "sectors": "تم فحص {{count}} قطاعًا من السماء"
+  },
+  "discoveries": {
+    "title": "الاكتشافات",
+    "empty": "لا توجد شذوذات بعد. واصل الإصغاء.",
+    "statusVerifying": "جارٍ التحقق",
+    "statusResolved": "تم الحل",
+    "statusCritical": "حرج",
+    "detectedBy": "اكتُشف بواسطة {{count}} هاتفًا",
+    "score": "النتيجة"
+  },
+  "profile": {
+    "title": "أثري",
+    "listeningSince": "يصغي منذ",
+    "totalHours": "الساعات المساهَم بها",
+    "packets": "الحزم المحلَّلة",
+    "anomalies": "الشذوذات المكتشفة",
+    "coverage": "تغطية السماء",
+    "globalRank": "الترتيب العالمي",
+    "countryRank": "ترتيب الدولة"
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "quietHours": "الإصغاء بين",
+    "wifiOnly": "Wi-Fi فقط",
+    "chargingOnly": "أثناء الشحن فقط",
+    "notifications": "تنبيهات الشذوذ",
+    "language": "اللغة",
+    "dataLimit": "حد البيانات الليلي",
+    "transparency": "كيف تُستخدم بياناتك",
+    "learnMore": "تعرّف على عمل LISTEN",
+    "credits": "الاعتمادات والتراخيص"
+  },
+  "common": {
+    "yes": "نعم",
+    "no": "لا",
+    "on": "تشغيل",
+    "off": "إيقاف",
+    "cancel": "إلغاء",
+    "save": "حفظ"
+  }
+}

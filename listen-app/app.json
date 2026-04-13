@@ -43,18 +43,12 @@
     },
     "plugins": [
       "expo-router",
-      "expo-localization",
-      [
-        "expo-notifications",
-        {
-          "color": "#06D6A0"
-        }
-      ]
+      "expo-localization"
     ],
     "experiments": {
       "typedRoutes": true
     },
-    "runtimeVersion": "exposdk:51.0.0",
+    "runtimeVersion": "exposdk:54.0.0",
     "extra": {
       "router": {
         "origin": false

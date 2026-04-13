@@ -13,30 +13,56 @@ import pt from '../locales/pt.json';
 import zh from '../locales/zh.json';
 
 /**
- * Initialise i18next with all supported locales. Auto-detects the device
- * language; falls back to English.
+ * i18next is initialised synchronously at **module load time**, not inside
+ * a useEffect. Two reasons:
+ *
+ *   1. Every screen calls `useTranslation` during its very first render.
+ *      If i18next isn't initialised yet, react-i18next either returns a
+ *      broken `t` or — with Suspense enabled — throws a Promise that the
+ *      React 19 scheduler has nowhere to catch, which presents as a blank
+ *      screen in Expo Go.
+ *   2. This module has no side effects other than calling `i18n.init`,
+ *      which is safe to run in both iOS and Android JS environments at
+ *      bundle load time.
+ *
+ * We also explicitly set `useSuspense: false` so the first render never
+ * throws a Promise even if i18n is somehow re-initialised later.
  */
-export function initI18n(overrideLanguage?: string | null): void {
-  const device = Localization.getLocales()[0]?.languageCode ?? 'en';
-  i18n
-    .use(initReactI18next)
-    .init({
-      compatibilityJSON: 'v3',
-      resources: {
-        ar: { translation: ar },
-        de: { translation: de },
-        en: { translation: en },
-        es: { translation: es },
-        fr: { translation: fr },
-        hi: { translation: hi },
-        ja: { translation: ja },
-        pt: { translation: pt },
-        zh: { translation: zh },
-      },
-      lng: overrideLanguage ?? device,
-      fallbackLng: 'en',
-      interpolation: { escapeValue: false },
-    });
+
+function detectLanguage(): string {
+  try {
+    return Localization.getLocales()[0]?.languageCode ?? 'en';
+  } catch {
+    return 'en';
+  }
+}
+
+if (!i18n.isInitialized) {
+  i18n.use(initReactI18next).init({
+    compatibilityJSON: 'v3',
+    resources: {
+      ar: { translation: ar },
+      de: { translation: de },
+      en: { translation: en },
+      es: { translation: es },
+      fr: { translation: fr },
+      hi: { translation: hi },
+      ja: { translation: ja },
+      pt: { translation: pt },
+      zh: { translation: zh },
+    },
+    lng: detectLanguage(),
+    fallbackLng: 'en',
+    interpolation: { escapeValue: false },
+    react: { useSuspense: false },
+  });
+}
+
+/** Optional runtime language switch used by the settings screen. */
+export function setLanguage(lang: string | null): void {
+  if (lang && lang !== i18n.language) {
+    i18n.changeLanguage(lang).catch(() => {});
+  }
 }
 
 export default i18n;

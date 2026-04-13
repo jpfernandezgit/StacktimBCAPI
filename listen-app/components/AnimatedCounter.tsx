@@ -43,7 +43,15 @@ export const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value, duration]);
 
-  return <Text style={[styles.text, style]}>{format(displayed)}</Text>;
+  return (
+    <Text
+      style={[styles.text, style]}
+      accessibilityRole="text"
+      accessibilityLiveRegion="polite"
+    >
+      {format(displayed)}
+    </Text>
+  );
 };
 
 function format(n: number): string {

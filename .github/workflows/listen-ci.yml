@@ -1,0 +1,65 @@
+name: LISTEN — typecheck & tests
+
+on:
+  pull_request:
+    paths:
+      - 'listen-app/**'
+      - '.github/workflows/listen-ci.yml'
+  push:
+    branches:
+      - master
+      - main
+    paths:
+      - 'listen-app/**'
+
+defaults:
+  run:
+    working-directory: listen-app
+
+jobs:
+  unit:
+    name: Unit tests (pure TS)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: listen-app/package.json
+
+      # The LISTEN package references native-only deps (react-native-screens,
+      # Skia). We don't need them to run the pure-TS signal processor tests,
+      # so we install only the Jest toolchain with --ignore-scripts.
+      - name: Install Jest toolchain
+        run: |
+          npm install --no-save --ignore-scripts --loglevel=error \
+            jest@29 ts-jest@29 typescript@5 @types/jest@29
+
+      - name: Run tests
+        run: npx jest --config jest.config.js --ci
+
+  lint:
+    name: TypeScript compile check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install minimal TS toolchain
+        run: |
+          npm install --no-save --ignore-scripts --loglevel=error \
+            typescript@5 @types/node
+
+      # A narrow tsc pass on the util + services + store code. App/components
+      # need the full Expo types and are validated in a separate (future)
+      # workflow that boots an Expo dev-client.
+      - name: Typecheck pure modules
+        run: |
+          npx tsc --noEmit --target es2020 --module commonjs \
+            --esModuleInterop --strict --skipLibCheck \
+            utils/fft.ts utils/anomalyScore.ts utils/constellationGen.ts

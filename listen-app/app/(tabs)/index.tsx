@@ -1,14 +1,19 @@
 import { router } from 'expo-router';
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { StyleSheet, Text, View } from 'react-native';
+import { AccessibilityInfo, Pressable, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { AnimatedCounter } from '../../components/AnimatedCounter';
 import { ListenButton } from '../../components/ListenButton';
 import { StarField } from '../../components/StarField';
-import { WaveformVisualizer } from '../../components/WaveformVisualizer';
+import { Waveform } from '../../components/waveform';
 import { Colors } from '../../constants/colors';
 import { FontSizes, Spacing, Typography } from '../../constants/typography';
+import {
+  registerBackgroundTask,
+  unregisterBackgroundTask,
+} from '../../services/backgroundTask';
+import { subscribeGlobalStats } from '../../services/realtimeStats';
 import { useListenStore } from '../../store/useListenStore';
 
 /**
@@ -27,33 +32,41 @@ export default function HomeScreen() {
 
   const isListening = state === 'listening' || state === 'processing';
 
-  // Simulated live counter drift — real app gets this from Supabase Realtime.
+  // Live counter — driven by Supabase Realtime on the global_stats table.
+  // If the Supabase URL is unset (dev without backend) the subscription is a
+  // no-op and the counter stays on its persisted value.
   useEffect(() => {
-    const id = setInterval(() => {
-      updateGlobalStats({
-        activePhones:
-          globalStats.activePhones + Math.floor(Math.random() * 120 - 40),
-      });
-    }, 3000);
-    return () => clearInterval(id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const unsub = subscribeGlobalStats();
+    return unsub;
   }, []);
 
-  // Rotate the demo "current sector" while listening so the screen feels alive.
+  // Demo-only: rotate the visible "current sector" while listening so the
+  // home screen feels alive even in the absence of real packets.
   useEffect(() => {
     if (!isListening) return;
     const id = setInterval(() => {
       setCurrentSector(randomSector());
+      // Nudge the counter so the hero number still breathes between
+      // real Realtime pushes.
+      updateGlobalStats({
+        activePhones: globalStats.activePhones + Math.floor(Math.random() * 80 - 20),
+      });
     }, 4500);
     return () => clearInterval(id);
-  }, [isListening, setCurrentSector]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isListening]);
 
-  const handleToggle = () => {
-    setState(isListening ? 'idle' : 'listening');
-    if (!isListening) {
+  const handleToggle = async () => {
+    const next = isListening ? 'idle' : 'listening';
+    setState(next);
+    if (next === 'listening') {
       setCurrentSector(randomSector());
+      await registerBackgroundTask().catch(() => {});
+      AccessibilityInfo.announceForAccessibility?.('LISTEN is now listening');
     } else {
       setCurrentSector(null);
+      await unregisterBackgroundTask().catch(() => {});
+      AccessibilityInfo.announceForAccessibility?.('LISTEN is paused');
     }
   };
 
@@ -72,7 +85,7 @@ export default function HomeScreen() {
         </View>
 
         <View style={styles.center}>
-          <WaveformVisualizer active={isListening} width={320} height={140} />
+          <Waveform active={isListening} width={320} height={140} />
           {currentSector ? (
             <Text style={styles.sector}>
               {t('home.sector', { sector: currentSector })}
@@ -90,9 +103,13 @@ export default function HomeScreen() {
             onPress={handleToggle}
             label={isListening ? t('home.listening') : t('home.startListening')}
           />
-          <Text style={styles.settingsLink} onPress={() => router.push('/settings')}>
-            ⚙ Settings
-          </Text>
+          <Pressable
+            onPress={() => router.push('/settings')}
+            accessibilityRole="button"
+            accessibilityLabel="Open settings"
+          >
+            <Text style={styles.settingsLink}>⚙ Settings</Text>
+          </Pressable>
         </View>
       </SafeAreaView>
     </View>

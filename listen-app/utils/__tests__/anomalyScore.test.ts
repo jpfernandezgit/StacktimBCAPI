@@ -1,8 +1,10 @@
+import { magnitudeSpectrum } from '../fft';
 import {
   detectPeaks,
   kurtosis,
   scorePacket,
   spectralFlatness,
+  topPeakZScore,
 } from '../anomalyScore';
 
 /** Deterministic Gaussian-ish noise via Box-Muller with a seeded PRNG. */
@@ -56,5 +58,17 @@ describe('anomalyScore', () => {
     const result = scorePacket(signal);
     expect(result.score).toBeGreaterThan(55);
     expect(result.peakFrequencies.length).toBeGreaterThan(0);
+  });
+
+  test('topPeakZScore is large for a pure tone, small for white noise', () => {
+    const n = 1024;
+    const tone = Array.from({ length: n }, (_, i) =>
+      Math.sin((2 * Math.PI * 41 * i) / n),
+    );
+    const toneSpectrum = magnitudeSpectrum(tone);
+    expect(topPeakZScore(toneSpectrum)).toBeGreaterThan(10);
+
+    const noiseSpectrum = magnitudeSpectrum(seededNoise(n, 11));
+    expect(topPeakZScore(noiseSpectrum)).toBeLessThan(10);
   });
 });

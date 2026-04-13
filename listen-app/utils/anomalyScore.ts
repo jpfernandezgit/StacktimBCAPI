@@ -107,6 +107,23 @@ export function detectPeaks(
 }
 
 /**
+ * Z-score of the spectrum's highest bin (ignoring DC). A pure sine wave on
+ * a 1024-sample packet can easily push this above 20. We use it as a
+ * continuous proxy for "how striking is the strongest tone?" — even a
+ * single, very sharp peak will dominate the final anomaly score.
+ */
+export function topPeakZScore(spectrum: readonly number[]): number {
+  if (spectrum.length < 3) return 0;
+  const { mean, std } = meanStd(spectrum.slice(1));
+  if (std === 0) return 0;
+  let maxVal = -Infinity;
+  for (let i = 1; i < spectrum.length; i++) {
+    if (spectrum[i] > maxVal) maxVal = spectrum[i];
+  }
+  return (maxVal - mean) / std;
+}
+
+/**
  * Score a real-valued packet. Pure function, no side effects.
  */
 export function scorePacket(samples: readonly number[]): AnomalyResult {
@@ -115,24 +132,31 @@ export function scorePacket(samples: readonly number[]): AnomalyResult {
   const flatness = spectralFlatness(spectrum);
   const peaks = detectPeaks(spectrum, Config.peakStdDevThreshold);
   const k = kurtosis(samples);
+  const topZ = topPeakZScore(spectrum);
 
   // Component scores, each clamped to [0, 1].
-  // 1. Narrowband evidence: more peaks -> higher component, saturating at 5.
-  const peakComponent = Math.min(1, peaks.length / 5);
+  //
+  // 1. Peak height: the strongest bin's z-score is by far the most
+  //    discriminative feature for narrowband emission. An 8-sigma peak maps
+  //    to 1.0 which saturates the component.
+  const heightComponent = Math.min(1, topZ / 8);
 
   // 2. Tonality: (1 - flatness). White noise -> ~0. Pure tone -> ~1.
   const tonalComponent = Math.max(0, Math.min(1, 1 - flatness));
 
-  // 3. Non-Gaussianity: |kurtosis| / 6 saturating. Occasional chirps create
-  //    heavy tails. Negative kurtosis (sub-Gaussian) is also noteworthy.
+  // 3. Non-Gaussianity of the raw samples. Negative kurtosis (sub-Gaussian,
+  //    e.g. a clean sine riding above noise) is also noteworthy.
   const kurtComponent = Math.min(1, Math.abs(k) / 6);
 
-  // Weighted mix — peaks dominate because narrowband emission is the classic
-  // SETI signature.
+  // 4. Multiplicity bonus: when several independent bins cross the peak
+  //    threshold, that is extra evidence (think spectral harmonics).
+  const multiplicity = Math.min(1, peaks.length / 5);
+
   const mix =
-    0.55 * peakComponent +
-    0.30 * tonalComponent +
-    0.15 * kurtComponent;
+    0.60 * heightComponent +
+    0.20 * tonalComponent +
+    0.10 * kurtComponent +
+    0.10 * multiplicity;
 
   const score = Math.round(Math.min(100, Math.max(0, mix * 100)));
 

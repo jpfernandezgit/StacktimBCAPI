@@ -1,5 +1,6 @@
+import * as Haptics from 'expo-haptics';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Colors } from '../constants/colors';
 import { FontSizes, Radii, Spacing, Typography } from '../constants/typography';
 
@@ -39,10 +40,28 @@ const STATUS_ICONS: Record<AnomalyStatus, string> = {
 
 export const AnomalyCard: React.FC<AnomalyCardProps> = ({ anomaly, onPress }) => {
   const color = STATUS_COLORS[anomaly.status];
+  const handlePress = () => {
+    // Contact would get a custom "success" buzz; critical gets a heavier tap.
+    if (anomaly.status === 'contact') {
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => {});
+    } else if (anomaly.status === 'critical') {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy).catch(() => {});
+    } else {
+      Haptics.selectionAsync().catch(() => {});
+    }
+    onPress?.();
+  };
+
   return (
-    <View
+    <Pressable
+      onPress={handlePress}
       style={[styles.card, { borderLeftColor: color }]}
-      onTouchEnd={onPress}
+      accessibilityRole="button"
+      accessibilityLabel={
+        `${anomaly.statusLabel}. Sector ${anomaly.skySector}. ` +
+        `Score ${anomaly.score} out of 100. ` +
+        `Detected by ${anomaly.detectedBy} phones.`
+      }
     >
       <View style={styles.row}>
         <Text style={[styles.icon, { color }]}>{STATUS_ICONS[anomaly.status]}</Text>
@@ -58,7 +77,7 @@ export const AnomalyCard: React.FC<AnomalyCardProps> = ({ anomaly, onPress }) =>
         <Text style={styles.resolution}>{anomaly.resolution}</Text>
       )}
       <Text style={styles.timestamp}>{anomaly.timestamp}</Text>
-    </View>
+    </Pressable>
   );
 };
 

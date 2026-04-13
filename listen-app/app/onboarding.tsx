@@ -13,7 +13,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StarField } from '../components/StarField';
-import { WaveformVisualizer } from '../components/WaveformVisualizer';
+import { Waveform } from '../components/waveform';
 import { Colors } from '../constants/colors';
 import { FontSizes, Radii, Spacing, Typography } from '../constants/typography';
 
@@ -54,7 +54,7 @@ export default function OnboardingScreen() {
               exiting={FadeOut}
               style={{ alignItems: 'center' }}
             >
-              <WaveformVisualizer active={true} width={320} height={120} />
+              <Waveform active={true} width={320} height={120} />
               <Text style={[styles.body, { marginTop: Spacing.xl }]}>
                 {t('onboarding.body3')}
               </Text>

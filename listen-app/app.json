@@ -4,27 +4,32 @@
     "slug": "listen",
     "version": "0.1.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
     "scheme": "listen",
     "userInterfaceStyle": "dark",
+    "backgroundColor": "#0A0E17",
     "splash": {
-      "image": "./assets/splash.png",
       "resizeMode": "cover",
       "backgroundColor": "#0A0E17"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.listen.app",
       "infoPlist": {
-        "UIBackgroundModes": ["fetch", "processing"],
-        "BGTaskSchedulerPermittedIdentifiers": ["com.listen.app.signal-processing"]
+        "UIBackgroundModes": [
+          "fetch",
+          "processing"
+        ],
+        "BGTaskSchedulerPermittedIdentifiers": [
+          "com.listen.app.signal-processing"
+        ]
       }
     },
     "android": {
       "package": "com.listen.app",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#0A0E17"
       },
       "permissions": [
@@ -48,6 +53,18 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "3db7855d-6039-4800-b530-84b4611fbbf4"
+      }
+    },
+    "owner": "jelubrlu"
   }
 }

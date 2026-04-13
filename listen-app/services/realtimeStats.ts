@@ -11,6 +11,7 @@
  */
 
 import type { RealtimeChannel } from '@supabase/supabase-js';
+import { Config } from '../constants/config';
 import { useListenStore } from '../store/useListenStore';
 import { getSupabase } from './supabaseClient';
 
@@ -32,6 +33,11 @@ function applyRow(row: GlobalStatsRow): void {
 }
 
 export function subscribeGlobalStats(): () => void {
+  // Without a configured Supabase project we'd just spam connection errors
+  // in the console. Let the UI stay on the persisted mock numbers instead.
+  if (!Config.supabaseUrl || !Config.supabaseAnonKey) {
+    return () => {};
+  }
   const supabase = getSupabase();
 
   // Prime the store with the current row — cheap, one-shot select.

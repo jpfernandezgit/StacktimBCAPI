@@ -1,32 +1,19 @@
 /**
- * Runtime-selected waveform. Tries Skia first; if the module is missing
- * (Expo Go, web without the Skia plugin), falls back to the SVG variant.
+ * Default waveform export. Points at the SVG-based WaveformVisualizer so
+ * the home screen boots in Expo Go, on web, and in a fresh dev-client
+ * without any native setup.
  *
- * This keeps the home screen importing a single name (`Waveform`) while
- * allowing the heavier, richer Skia layer to light up automatically when
- * a native dev-client has shipped Skia.
+ * The richer Skia version lives in `../WaveformSkia.tsx`. To enable it,
+ * install @shopify/react-native-skia in a native dev-client, then swap
+ * this file's export to the Skia component (or add a platform-specific
+ * `index.native.ts`). Keeping it behind a manual opt-in avoids bundling
+ * Skia on platforms that don't support it out of the box.
  */
-import type React from 'react';
-import { WaveformVisualizer } from '../WaveformVisualizer';
+export { WaveformVisualizer as Waveform } from '../WaveformVisualizer';
 
-interface WaveformProps {
+export interface WaveformProps {
   active: boolean;
   width?: number;
   height?: number;
   amplitude?: number;
 }
-
-let Impl: React.ComponentType<WaveformProps> = WaveformVisualizer;
-try {
-  // `require` is synchronous and catchable; ESM `import` is not.
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const mod = require('../WaveformSkia');
-  if (mod?.WaveformSkia) {
-    Impl = mod.WaveformSkia;
-  }
-} catch {
-  // Skia not installed — stay on the SVG implementation.
-}
-
-export const Waveform = Impl;
-export type { WaveformProps };

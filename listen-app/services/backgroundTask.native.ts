@@ -1,7 +1,14 @@
 /**
- * Background task registration. Uses expo-task-manager + expo-background-fetch
- * so the device can process one packet at a time while the phone is charging
- * and connected to Wi-Fi. All gating logic lives here.
+ * Background task registration (native implementation).
+ *
+ * Uses expo-task-manager + expo-background-fetch so the device can process
+ * one packet at a time while the phone is charging and connected to Wi-Fi.
+ * All gating logic lives here.
+ *
+ * Metro picks this file on iOS / Android via the `.native.ts` suffix; the
+ * web bundle uses `backgroundTask.web.ts` which is a pure no-op. Keeping
+ * them in separate files means Metro never tries to resolve
+ * expo-task-manager when building the web target.
  */
 
 import * as BackgroundFetch from 'expo-background-fetch';
@@ -36,9 +43,7 @@ TaskManager.defineTask(TASK_NAME, async () => {
     : BackgroundFetch.BackgroundFetchResult.NoData;
 });
 
-/**
- * Register the task with the OS. Safe to call multiple times.
- */
+/** Register the task with the OS. Safe to call multiple times. */
 export async function registerBackgroundTask(): Promise<void> {
   const isRegistered = await TaskManager.isTaskRegisteredAsync(TASK_NAME);
   if (isRegistered) return;

@@ -26,18 +26,69 @@ listen-app/
 
 ## Run locally
 
+The app boots without any backend, without any font files, and without a
+native dev-client. You can test it in three ways — pick the fastest for
+your machine.
+
+### 1. Expo Go on a physical phone (easiest)
+
 ```bash
 cd listen-app
-npm install
+npm install                         # if postinstall scripts fail,
+                                    # re-run with: npm install --ignore-scripts
 npx expo start
 ```
 
-Set Supabase credentials via `.env`:
+Then install **Expo Go** from the App Store / Play Store, make sure your
+phone is on the same Wi-Fi as your laptop, and scan the QR code that Metro
+prints. The app will hot-reload as you edit files.
+
+### 2. Web (no phone needed)
+
+```bash
+cd listen-app
+npm install --ignore-scripts        # web doesn't need the native modules
+npx expo start --web
+```
+
+Metro will open `http://localhost:8081` in your browser. The
+`services/backgroundTask.web.ts` stub keeps the UI fully interactive — only
+the background packet processing no-ops.
+
+### 3. iOS simulator (macOS) / Android emulator
+
+```bash
+cd listen-app
+npm install
+npx expo start --ios      # or --android
+```
+
+Requires Xcode / Android Studio installed.
+
+### Backend — optional
+
+All mock data is baked in. To wire up a real Supabase project, copy
+`.env.example` to `.env` and fill in:
 
 ```
 EXPO_PUBLIC_SUPABASE_URL=https://xxxxx.supabase.co
 EXPO_PUBLIC_SUPABASE_ANON_KEY=eyJ...
 ```
+
+Without these, `subscribeGlobalStats()` is a no-op and the hero counter
+keeps drifting on its local simulated values.
+
+### Run the unit tests
+
+The scientific core has its own standalone Jest config:
+
+```bash
+cd listen-app
+npm install --no-save --ignore-scripts jest@29 ts-jest@29 typescript@5 @types/jest@29
+npx jest --config jest.config.js
+```
+
+Expected output: **11 passed, 2 total**.
 
 ## Scientific core
 

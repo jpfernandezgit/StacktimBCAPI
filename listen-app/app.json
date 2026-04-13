@@ -54,9 +54,7 @@
     "experiments": {
       "typedRoutes": true
     },
-    "runtimeVersion": {
-      "policy": "appVersion"
-    },
+    "runtimeVersion": "exposdk:51.0.0",
     "extra": {
       "router": {
         "origin": false
@@ -65,6 +63,9 @@
         "projectId": "3db7855d-6039-4800-b530-84b4611fbbf4"
       }
     },
-    "owner": "jelubrlu"
+    "owner": "jelubrlu",
+    "updates": {
+      "url": "https://u.expo.dev/3db7855d-6039-4800-b530-84b4611fbbf4"
+    }
   }
 }
